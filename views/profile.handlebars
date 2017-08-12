@@ -2,7 +2,17 @@
 {{> header-logged-in}}
 {{>sidenav}}
 <div class="dd-matches-container">
+
     {{>matches}}
     {{!-- {{>pet_pref}}
     {{new_profile_form}} --}}
 </div>
+
+    <h1>Your Profile</h1>
+	<div id="user-info">
+		Email: {{user.email}}
+		<br>
+		Password: {{user.password}}
+	</div>
+</div>
+

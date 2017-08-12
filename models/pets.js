@@ -1,44 +1,48 @@
 module.exports = function(sequelize, DataTypes) {
-	var Dogs =  sequelize.define("Dogs", {
-		dog_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		image: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				isUrl: true
-			}
-		},
-		zip_code: {
+    var Dogs = sequelize.define("Dogs", {
+        dog_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isUrl: true
+            }
+        },
+        zip_code: {
             type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [1, 140]
+            }
         },
         dob: {
-			// type: DataTypes.DATEONLY
-			type: DataTypes.INTEGER,
-		},
-		energy_level: {
-			type: DataTypes.STRING	
-		},
-		sex: {
-			type: DataTypes.STRING
-		},
-		size: {
-			type: DataTypes.STRING
-		}
-	});
+            // type: DataTypes.DATEONLY
+            type: DataTypes.INTEGER,
+        },
+        energy_level: {
+            type: DataTypes.STRING
+        },
+        sex: {
+            type: DataTypes.STRING
+        },
+        size: {
+            type: DataTypes.STRING
+        },
+
+    });
 
 
-	// Dogs.associate = function(models) {
-	// // We're saying that a Post should belong to an Author
-	// // A Post can't be created without an Author due to the foreign key constraint
-	// 	Dogs.belongsTo(models.User, {
-	// 	  foreignKey: {
-	// 	    allowNull: false
-	// 	  }
-	// 	});
-	// };
+    Dogs.associate = function(models) {
 
-	return Dogs;
+        Dogs.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+    return Dogs;
 }
