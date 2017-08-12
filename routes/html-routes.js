@@ -33,6 +33,10 @@ module.exports = function(app) {
     res.render('new_profile_form');
   });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca5784db703c16dc34e08d23680e59266082ee14
   app.get("/profile", function(req, res){
     res.render('profile');
   });
@@ -40,8 +44,12 @@ module.exports = function(app) {
   app.get("/preferences", function(req, res){
     res.render('profile_preferences');
   });
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> ca5784db703c16dc34e08d23680e59266082ee14
   app.get("/profile-form-submit", function(req, res){
     res.render('profile_form');
   });

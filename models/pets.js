@@ -34,7 +34,6 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-
     Dogs.associate = function(models) {
 
         Dogs.belongsTo(models.User, {

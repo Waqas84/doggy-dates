@@ -167,6 +167,9 @@ module.exports = function(app) {
             
         }
     });
+<<<<<<< HEAD
+=======
+
     app.get("/matches", function(req, res){
         db.Dogs.findAll().then(data => {
 
@@ -177,6 +180,24 @@ module.exports = function(app) {
         })     
     });
 
+    app.post("/matches-submit", function(req, res){
+        console.log(req.body);
+    });
+>>>>>>> ca5784db703c16dc34e08d23680e59266082ee14
+    app.get("/matches", function(req, res){
+        db.Dogs.findAll().then(data => {
+
+        let allDogsObj = {
+            all_dogs: data //data is a array of objects
+        };
+          res.render('profile_matches', allDogsObj);
+        })     
+    });
+<<<<<<< HEAD
+
+=======
+      
+>>>>>>> ca5784db703c16dc34e08d23680e59266082ee14
     app.post("/matches-submit", function(req, res){
         console.log(req.body);
     });
