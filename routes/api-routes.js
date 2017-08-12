@@ -48,14 +48,37 @@ module.exports = function(app) {
 
 
     app.get("/preferences", function(req, res){
-        // res.render('profile_preferences');
+        db.Dogs.findById(3).then(data => {
+
+            // console.log(data.dob);
+            // let dob = data.dob
+
+            let dogObj = {
+                dog: data //data is a array of objects
+            };
+
+            res.render('profile_preferences', dogObj);  
+        });
+
+     });
+
+
+    app.get("/api/dog_data", function(req, res) {
         db.Dogs.findById(1).then(data => {
 
-        let dogObj = {
-            dog: data //data is a array of objects
-        };
-          res.render('profile_preferences', dogObj);
-        })  
+            // console.log(data.dob);
+
+            // let dob = data.dob
+
+            // let dogObj = {
+            //     dog: data //data is a array of objects
+            // };
+
+            res.json({
+                data: data
+            });   
+        });   
+
     });
 
 
@@ -167,23 +190,33 @@ module.exports = function(app) {
             
         }
     });
-<<<<<<< HEAD
-=======
+
 
     app.get("/matches", function(req, res){
+        // Pass in user data for sidebar
+        // db.Dogs.findById(1).then(data => {
+
+        //     dogObj = {
+        //         dog: data //data is a array of objects
+        //     };
+
+        // })       
+
         db.Dogs.findAll().then(data => {
 
-        let allDogsObj = {
-            all_dogs: data //data is a array of objects
-        };
-          res.render('profile_matches', allDogsObj);
-        })     
+            let allDogsObj = {
+                all_dogs: data //data is a array of objects
+            };
+            
+            res.render('profile_matches', allDogsObj);
+        })
+      
     });
 
     app.post("/matches-submit", function(req, res){
         console.log(req.body);
     });
->>>>>>> ca5784db703c16dc34e08d23680e59266082ee14
+
     app.get("/matches", function(req, res){
         db.Dogs.findAll().then(data => {
 
@@ -193,11 +226,7 @@ module.exports = function(app) {
           res.render('profile_matches', allDogsObj);
         })     
     });
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> ca5784db703c16dc34e08d23680e59266082ee14
     app.post("/matches-submit", function(req, res){
         console.log(req.body);
     });
